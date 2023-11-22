@@ -25,7 +25,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       PositionId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Positions',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
       },
       createdAt: {
         allowNull: false,
