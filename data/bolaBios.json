@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Lionel Messi",
+      "birthDate": "1987-06-24",
+      "nationality": "Argentina",
+      "club": "Paris Saint-Germain",
+      "shortDescription": "Professional footballer widely considered one of the greatest of all time.",
+      "PositionId": 10
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "birthDate": "1985-02-05",
+      "nationality": "Portugal",
+      "club": "Manchester United",
+      "shortDescription": "Renowned footballer with a prolific goal-scoring record.",
+      "PositionId": 7
+    },
+    {
+      "name": "Neymar Jr.",
+      "birthDate": "1992-02-05",
+      "nationality": "Brazil",
+      "club": "Paris Saint-Germain",
+      "shortDescription": "Talented forward known for his skillful play.",
+      "PositionId": 11
+    }
+  ]
+  
