@@ -1,7 +1,7 @@
 const { BolaBio } = require('../models')
 const { Op } = require('sequelize')
 
-class Controller{
+class Controller {
     static async showAllBio(){
         try {
             let data = await BolaBio.findAll()
@@ -70,6 +70,14 @@ class Controller{
                 PositionId: req.body.PositionId,
             }, {where: {id: req.params.id}})
             res.redirect('')
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async editBio(req, res){
+        try {
+            res.render('loginPage')
         } catch (error) {
             res.send(error)
         }
