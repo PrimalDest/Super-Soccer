@@ -20,13 +20,13 @@ router.get("/bio", Controller.showAllBio)
 
 router.get("/add", Controller.addBio)
 
-
-
 // router.get("/search", Controller.search)
 
-// router.get("/:id", Controller.detail)
+router.get("/:id", Controller.detailBio)
 
 router.post("/add", Controller.postAddBio)
+
+router.get("/:id/edit", Controller.editBio)
 
 router.post("/:id/edit", Controller.editBio)
 

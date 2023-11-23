@@ -146,7 +146,10 @@ class Controller {
 
     static async editBio(req, res) {
         try {
-            res.render('editBioBola');
+            let id = req.params.id
+            let bio = await BolaBio.findByPk(id)
+            console.log(id);
+            res.render('editBioBola', { bio })
         } catch (error) {
             res.send(error);
         }
@@ -169,6 +172,17 @@ class Controller {
             res.redirect('/');
         } catch (error) {
             res.send(error);
+        }
+    }
+
+    static async detailBio(req, res){
+        try {
+            let id = req.params.id
+            let bio = await BolaBio.findByPk(id)
+            console.log(bio);
+            res.render('detailBio', {bio})
+        } catch (error) {
+            res.send(error)
         }
     }
 }
