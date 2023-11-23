@@ -21,10 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     club: DataTypes.STRING,
     shortDescription: DataTypes.STRING,
     PositionId: DataTypes.INTEGER,
-    shoot: DataTypes.INTEGER,
-    defend: DataTypes.INTEGER,
+    shooting: DataTypes.INTEGER,
+    defending: DataTypes.INTEGER,
     passing: DataTypes.INTEGER,
-    drible: DataTypes.INTEGER
+    dribbling: DataTypes.INTEGER,
+    imageUrl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'BolaBio',
