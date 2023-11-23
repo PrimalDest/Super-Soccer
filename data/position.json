@@ -1,14 +1,14 @@
-{
-    "positions": [
-      {
-        "name": "Forward"
-      },
-      {
-        "name": "Midfielder"
-      },
-      {
-        "name": "Defender"
-      }
-    ]
+[
+  {
+    "name": "Forward"
+  },
+  
+  {
+    "name": "Midfielder"
+  },
+
+  {
+    "name": "Defender"
   }
+]
   

@@ -20,7 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     nationality: DataTypes.STRING,
     club: DataTypes.STRING,
     shortDescription: DataTypes.STRING,
-    PositionId: DataTypes.INTEGER
+    PositionId: DataTypes.INTEGER,
+    shoot: DataTypes.INTEGER,
+    defend: DataTypes.INTEGER,
+    passing: DataTypes.INTEGER,
+    drible: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'BolaBio',
