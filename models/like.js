@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const bolabio = require('./bolabio');
 module.exports = (sequelize, DataTypes) => {
   class Like extends Model {
     /**
@@ -11,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Like.belongsTo(models.BolaBio)
+      Like.belongsTo(models.User)
     }
   }
   Like.init({

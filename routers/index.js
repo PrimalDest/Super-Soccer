@@ -20,6 +20,8 @@ router.get("/bio", Controller.showAllBio)
 
 router.get("/add", Controller.addBio)
 
+
+
 // router.get("/search", Controller.search)
 
 // router.get("/:id", Controller.detail)

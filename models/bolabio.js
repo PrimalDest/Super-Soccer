@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      BolaBio.belongsTo(models.Like)
+      BolaBio.hasMany(models.Like)
     }
   }
   BolaBio.init({

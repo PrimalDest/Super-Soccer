@@ -1,6 +1,7 @@
 const { BolaBio, User, Profile } = require('../models');
 const bcrypt = require('bcryptjs');
 
+
 class Controller {
     static home(req, res) {
         res.render('home');
