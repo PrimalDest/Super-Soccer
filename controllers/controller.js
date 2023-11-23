@@ -102,18 +102,22 @@ class Controller {
 
     static async showAllBio(req, res) {
         try {
-            let data = await BolaBio.findAll({
+            const data = await BolaBio.findAll({
                 include: {
                     model: Position,
                     attributes: ['name'],
                 },
             });
-            // res.send(data)
-            res.render('showBioBola', { data });
+    
+            const isAdmin = req.session.user && req.session.user.role === 'Admin';
+    
+            res.render('showBioBola', { data, isAdmin });
         } catch (error) {
             res.send(error.message);
         }
     }
+    
+
 
 
     static async delete(req, res) {
@@ -180,19 +184,46 @@ class Controller {
             res.send(error);
         }
     }
+    static async updateUserRole(req, res) {
+        const { userId, newRole } = req.body;
+
+        try {
+            if (!userId || !newRole) {
+                throw new Error('User ID and new role are required');
+            }
+
+            const user = await User.findByPk(userId);
+
+            if (!user) {
+                throw new Error('User not found');
+            }
+
+            user.role = newRole;
+            await user.save();
+
+            res.redirect('/user');
+        } catch (error) {
+            console.error(error);
+            req.flash('error', error.message);
+            res.redirect('/user');
+        }
+    }
+
     static async showAllUsers(req, res) {
         try {
             if (req.session.user && req.session.user.role === 'Admin') {
                 const users = await User.findAll();
                 res.render('showAllUsers', { users });
             } else {
-                res.redirect('/home1'); 
+                req.flash('error', 'You do not have permission to view this page');
+                res.redirect('/home1');
             }
         } catch (error) {
-            res.send(error.message);
+            console.error(error);
+            req.flash('error', error.message);
+            res.redirect('/home1');
         }
     }
-    
 }
 
 module.exports = Controller;

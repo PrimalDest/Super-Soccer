@@ -92,9 +92,21 @@
             <td>
               <div class="btn-group">
                 <% if (user.role === 'User') { %>
-                  <button class="btn btn-primary">Make Admin</button>
+                <form action="/updateUserRole" method="post">
+                  <input type="hidden" name="userId" value="<%= user.id %>" />
+                  <input type="hidden" name="newRole" value="Admin" />
+                  <button type="submit" class="btn btn-primary">
+                    Make Admin
+                  </button>
+                </form>
                 <% } else if (user.role === 'Admin') { %>
-                  <button class="btn btn-success">Make User</button>
+                <form action="/updateUserRole" method="post">
+                  <input type="hidden" name="userId" value="<%= user.id %>" />
+                  <input type="hidden" name="newRole" value="User" />
+                  <button type="submit" class="btn btn-success">
+                    Make User
+                  </button>
+                </form>
                 <% } %>
               </div>
             </td>

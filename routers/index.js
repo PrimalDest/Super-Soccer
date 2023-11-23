@@ -2,35 +2,32 @@ const express = require('express');
 const router = express.Router();
 const Controller = require('../controllers/controller');
 
-router.get('/', Controller.home); // halaman rumah
+router.get('/', Controller.home); // Home page
 
-router.get('/home1', Controller.home1); // halaman rumah
+router.get('/home1', Controller.home1); // Home page
 
-router.get('/register', Controller.register); // register page => hanya untuk user
+router.get('/register', Controller.register); // Register page => only for users
 
 router.post('/register', Controller.register);
 
-router.get('/login', Controller.login); // login page => user dan admin
+router.get('/login', Controller.login); // Login page => for users and admins
 
 router.post('/login', Controller.login);
 
-router.get('/logout', Controller.logout); // logout route
+router.get('/logout', Controller.logout); // Logout route
 
-router.get("/bio", Controller.showAllBio)
+router.get('/bio', Controller.showAllBio);
 
-router.get('/user', Controller.showAllUsers)
+router.get('/user', Controller.showAllUsers);
 
-router.get("/add", Controller.addBio)
+router.get('/add', Controller.addBio);
 
-router.post("/add", Controller.postAddBio)
+router.post('/add', Controller.postAddBio);
 
-// router.get("/search", Controller.search)
+router.post('/:id/edit', Controller.editBio);
 
-// router.get("/:id", Controller.detailBio)
+router.get('/:id/delete', Controller.delete);
 
-router.post("/:id/edit", Controller.editBio)
-
-router.get("/:id/delete", Controller.delete)
-
+router.post('/updateUserRole', Controller.updateUserRole);
 
 module.exports = router;
