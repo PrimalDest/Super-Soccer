@@ -1,18 +1,14 @@
 [
-    {
-      "email": "user1@example.com",
-      "password": "password123",
-      "role": "admin"
-    },
-    {
-      "email": "user2@example.com",
-      "password": "securepass456",
-      "role": "user"
-    },
-    {
-      "email": "user3@example.com",
-      "password": "secretword789",
-      "role": "user"
-    }
-  ]
-  
+  {
+    "email": "johndoe@gmail.com",
+    "password": "$2a$12$exeOquOcwxExU02CDHu8VOOVjIZv.fBALQa3JdNV/A7pXwDJyOm0O",
+    "role": "Admin",
+    "ProfileId": 1
+  },
+  {
+    "email": "janesmith@gmail.com",
+    "password": "$2a$10$5wl/vPUzy6NWx7bGhKyP/uwV2SDGB0wvKdU.6Rtyf0X/ScvKhhP1i",
+    "role": "User",
+    "ProfileId": 2
+  }
+]
