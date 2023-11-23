@@ -16,11 +16,9 @@
           <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Position</th>
-          <th scope="col">Birth Date</th>
           <th scope="col">Nationality</th>
           <th scope="col">Club</th>
           <th scope="col">Short Description</th>
-          <th scope="col">Stati</th>
         </tr>
       </thead>
       <tbody>
@@ -28,15 +26,10 @@
         <tr>
           <td><%= item.id %></td>
           <td><%= item.name %></td>
-          <td><%= item.Position.name %></td> 
-          <td><%= item.birthDate %></td>
+          <td><%= item.Position.name %></td>
           <td><%= item.nationality %></td>
           <td><%= item.club %></td>
           <td><%= item.shortDescription %></td>
-          <td><%= item.shooting %></td>
-          <td><%= item.defending %></td>
-          <td><%= item.passing %></td>
-          <td><%= item.dribbling %></td>
         </tr>
         <% }); %>
       </tbody>

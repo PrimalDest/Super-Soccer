@@ -155,10 +155,7 @@ class Controller {
 
     static async editBio(req, res) {
         try {
-            let id = req.params.id
-            let bio = await BolaBio.findByPk(id)
-            console.log(id);
-            res.render('editBioBola', { bio })
+            res.render('editBioBola');
         } catch (error) {
             res.send(error);
         }
@@ -179,6 +176,14 @@ class Controller {
                 { where: { id: req.params.id } }
             );
             res.redirect('/');
+        } catch (error) {
+            res.send(error);
+        }
+    }
+    static async showAllUsers(req, res) {
+        try {
+            const users = await User.findAll();
+            res.render('showAllUsers', { users });
         } catch (error) {
             res.send(error);
         }

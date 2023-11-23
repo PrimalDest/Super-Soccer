@@ -26,7 +26,7 @@ router.post("/add", Controller.postAddBio)
 
 // router.get("/search", Controller.search)
 
-router.get("/:id", Controller.detailBio)
+// router.get("/:id", Controller.detailBio)
 
 router.post("/:id/edit", Controller.editBio)
 
