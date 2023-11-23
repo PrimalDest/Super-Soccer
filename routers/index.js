@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const Controller = require('../controllers/controller')
-const bolabio = require('./bolabio')
-const login = require('./login')
 
-router.get('/', Controller.login)
-
-router.use("/bolabio", bolabio)
-router.use("/login", login)
-
+router.use("/", login)
+router.get("/bio", Controller.showAllBio)
+router.get("/bio/add", Controller.addBio)
+router.post("/add", Controller.postAddBio)
+router.get("/bio/search", Controller.search)
+router.get("/bio/:id", Controller.detail)
+router.post("/bio/:id/edit", Controller.editBio)
+router.get("/bio/:id/delete", Controller.delete)
 
 module.exports = router
