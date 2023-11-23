@@ -103,17 +103,21 @@ class Controller {
     static async showAllBio(req, res) {
         try {
             let data = await BolaBio.findAll({
-                include: [{
+                include: {
                     model: Position,
                     as: 'Position'
                 }],
             });
-            // res.send(data)
-            res.render('showBioBola', { data });
+    
+            const isAdmin = req.session.user && req.session.user.role === 'Admin';
+    
+            res.render('showBioBola', { data, isAdmin });
         } catch (error) {
             res.send(error.message);
         }
     }
+    
+
 
 
     static async delete(req, res) {
@@ -193,32 +197,21 @@ class Controller {
             res.send(error);
         }
     }
-
-    static async detailBio(req, res){
-        try {
-            let id = req.params.id
-            // console.log(id);
-            let bio = await BolaBio.findByPk(id)
-            console.log(bio);
-            res.render('detailBio', {bio})
-        } catch (error) {
-            res.send(error)
-        }
-    }
-
     static async showAllUsers(req, res) {
         try {
             if (req.session.user && req.session.user.role === 'Admin') {
                 const users = await User.findAll();
                 res.render('showAllUsers', { users });
             } else {
-                res.redirect('/home1'); 
+                req.flash('error', 'You do not have permission to view this page');
+                res.redirect('/home1');
             }
         } catch (error) {
-            res.send(error.message);
+            console.error(error);
+            req.flash('error', error.message);
+            res.redirect('/home1');
         }
     }
-    
 }
 
 module.exports = Controller;
