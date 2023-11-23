@@ -18,15 +18,15 @@ router.get('/logout', Controller.logout); // logout route
 
 router.get("/bio", Controller.showAllBio)
 
+router.get('/user', Controller.showAllUsers)
+
 router.get("/add", Controller.addBio)
 
-
+router.post("/add", Controller.postAddBio)
 
 // router.get("/search", Controller.search)
 
 // router.get("/:id", Controller.detail)
-
-router.post("/add", Controller.postAddBio)
 
 router.post("/:id/edit", Controller.editBio)
 

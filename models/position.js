@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Position.belongsTo(models.BolaBio)
+      Position.hasOne(models.BolaBio)
     }
   }
   Position.init({

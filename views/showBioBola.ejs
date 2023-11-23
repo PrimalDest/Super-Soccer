@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<table class="table">
-    <thead>
+  </head>
+  <body>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <table class="table">
+      <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Position</th>
-            <th scope="col">Birth Date</th>
-            <th scope="col">Nationality</th>
-            <th scope="col">Club</th>
-            <th scope="col">Short Description</th>
-            <th scope="col">Short Description</th>
-            
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Position</th>
+          <th scope="col">Birth Date</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Club</th>
+          <th scope="col">Short Description</th>
+          <th scope="col">Stati</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         <% data.forEach(function(item) { %>
-            <tr>
-                <td><%= item.id %></td>
-                <td><%= item.name %></td>
-                <td><%= item.position %></td>
-                <td><%= item.birthDate %></td>
-                <td><%= item.nationality %></td>
-                <td><%= item.club %></td>
-                <td><%= item.shortDescription %></td>
-                <td>SHO<%= item.shooting %></td>
-                <td>DEF<%= item.defending %></td>
-                <td>PAS<%= item.passing %></td>
-                <td>DRI<%= item.dribbling %></td>
-            </tr>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.Position.name %></td> 
+          <td><%= item.birthDate %></td>
+          <td><%= item.nationality %></td>
+          <td><%= item.club %></td>
+          <td><%= item.shortDescription %></td>
+          <td><%= item.shooting %></td>
+          <td><%= item.defending %></td>
+          <td><%= item.passing %></td>
+          <td><%= item.dribbling %></td>
+        </tr>
         <% }); %>
-    </tbody>
-</table>
-</body>
+      </tbody>
+    </table>
+  </body>
 </html>
