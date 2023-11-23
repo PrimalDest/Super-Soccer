@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BolaBio Detail</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="<%= bio.imageUrl %>" class="card-img-top" alt="<%= bio.name %>">
+            <div class="card-body">
+                <h5 class="card-title"><%= bio.name %></h5>
+                <p class="card-text"><%= bio.shortDescription %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Position: <%= bio.PositionId %></li>
+                <li class="list-group-item">Birth Date: <%= bio.birthDate %></li>
+                <li class="list-group-item">Nationality: <%= bio.nationality %></li>
+                <li class="list-group-item">Club: <%= bio.club %></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

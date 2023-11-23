@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       BolaBio.hasMany(models.Like)
       BolaBio.belongsTo(models.Position)
+      BolaBio.belongsTo(models.Position);
+      
     }
   }
   BolaBio.init({
