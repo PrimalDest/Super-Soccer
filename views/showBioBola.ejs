@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <% data.forEach(function(item) { %>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="<%= item.imageUrl %>" class="card-img-top" alt="<%= item.name %>">
-                        <div class="card-body">
-                            <h5 class="card-title"><%= item.name %></h5>
-                            <p class="card-text"><%= item.shortDescription %></p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Position: <%= item.PositionId %></li>
-                            <li class="list-group-item">Birth Date: <%= item.birthDate %></li>
-                            <li class="list-group-item">Nationality: <%= item.nationality %></li>
-                            <li class="list-group-item">Club: <%= item.club %></li>
-                            <li class="list-group-item"><%= item.shooting %></li>
-                            <li class="list-group-item"><%= item.defending %></li>
-                            <li class="list-group-item"><%= item.passing %></li>
-                            <li class="list-group-item"><%= item.dribbling %></li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Detail</a>
-                            <a href="#" class="card-link">Delete</a>
-                        </div>
-                    </div>
-                </div>
-            <% }); %>
-        </div>
-    </div>
-</body>
+  </head>
+  <body>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Position</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Club</th>
+          <th scope="col">Short Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(function(item) { %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.Position.name %></td>
+          <td><%= item.nationality %></td>
+          <td><%= item.club %></td>
+          <td><%= item.shortDescription %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
 </html>

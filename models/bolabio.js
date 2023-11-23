@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       BolaBio.hasMany(models.Like)
+      BolaBio.belongsTo(models.Position)
       BolaBio.belongsTo(models.Position);
       
     }

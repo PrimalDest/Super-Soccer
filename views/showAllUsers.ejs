@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Users</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+      }
+
+      header {
+        background-color: #333;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      nav {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      nav a {
+        background-color: navajowhite;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: tan;
+      }
+
+      .container {
+        margin-top: 20px; /* Adjust the margin-top as needed */
+      }
+
+      .table {
+        margin-bottom: 20px; /* Adjust the margin-bottom as needed */
+      }
+
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>All User</h1>
+    </header>
+    <nav>
+      <a href="/add">Add Bio</a>
+      <a href="/bio">Bio</a>
+      <a href="/logout">logout</a>
+    </nav>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(function(user) { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td>
+              <div class="btn-group">
+                <% if (user.role === 'User') { %>
+                  <button class="btn btn-primary">Make Admin</button>
+                <% } else if (user.role === 'Admin') { %>
+                  <button class="btn btn-success">Make User</button>
+                <% } %>
+              </div>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

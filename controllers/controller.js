@@ -1,6 +1,5 @@
-const { BolaBio, User, Profile } = require('../models');
+const { BolaBio, User, Profile, Position } = require('../models');
 const bcrypt = require('bcryptjs');
-
 
 class Controller {
     static home(req, res) {
@@ -26,7 +25,7 @@ class Controller {
 
             const user = await User.findOne({
                 where: { email },
-                include: Profile, 
+                include: Profile,
             });
 
             if (!user) {
@@ -36,11 +35,15 @@ class Controller {
             const passwordMatch = await bcrypt.compare(password, user.password);
 
             if (passwordMatch) {
-                if (user.role === 'User' || user.role === 'Admin') {
-                    req.session.user = {
-                        id: user.id,
-                        name: user.Profile.name || 'Unknown User',
-                    };
+                req.session.user = {
+                    id: user.id,
+                    name: user.Profile.name || 'Unknown User',
+                    role: user.role,
+                };
+
+                if (user.role === 'Admin') {
+                    res.redirect('/user');
+                } else {
                     res.redirect('/home1');
                 }
             } else {
@@ -55,31 +58,31 @@ class Controller {
 
     static async register(req, res) {
         const { email, password, name, birthDate } = req.body;
-    
+
         try {
             if (!email || !password) {
                 throw new Error('Username, email, and password are required');
             }
-    
+
             const profile = await Profile.create({
                 name,
                 birthDate,
             });
-    
+
             const hashedPassword = await bcrypt.hash(password, 10);
-    
+
             const user = await User.create({
                 email,
                 password: hashedPassword,
                 ProfileId: profile.id,
-                role: 'User', 
+                role: 'User',
             });
-    
+
             req.session.user = {
                 id: user.id,
                 name: profile.name || 'Unknown User',
             };
-    
+
             return res.redirect('/home1');
         } catch (error) {
             console.error(error);
@@ -87,7 +90,7 @@ class Controller {
             return res.render('register');
         }
     }
-    
+
     static logout(req, res) {
         req.session.destroy((err) => {
             if (err) {
@@ -99,13 +102,19 @@ class Controller {
 
     static async showAllBio(req, res) {
         try {
-            let data = await BolaBio.findAll();
+            let data = await BolaBio.findAll({
+                include: {
+                    model: Position,
+                    attributes: ['name'],
+                },
+            });
             // res.send(data)
             res.render('showBioBola', { data });
         } catch (error) {
-            res.send(error);
+            res.send(error.message);
         }
     }
+
 
     static async delete(req, res) {
         try {
@@ -143,7 +152,7 @@ class Controller {
                 dribbling: req.body.dribbling,
                 imageUrl: req.body.imageUrl
             });
-            res.redirect('/');
+            res.redirect('/bio');
         } catch (error) {
             res.send(error);
         }
@@ -151,10 +160,7 @@ class Controller {
 
     static async editBio(req, res) {
         try {
-            let id = req.params.id
-            let bio = await BolaBio.findByPk(id)
-            console.log(id);
-            res.render('editBioBola', { bio })
+            res.render('editBioBola');
         } catch (error) {
             res.send(error);
         }
@@ -184,15 +190,12 @@ class Controller {
             res.send(error);
         }
     }
-
-    static async detailBio(req, res){
+    static async showAllUsers(req, res) {
         try {
-            let id = req.params.id
-            let bio = await BolaBio.findByPk(id)
-            console.log(bio);
-            res.render('detailBio', {bio})
+            const users = await User.findAll();
+            res.render('showAllUsers', { users });
         } catch (error) {
-            res.send(error)
+            res.send(error);
         }
     }
 }
