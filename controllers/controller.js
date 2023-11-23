@@ -103,10 +103,10 @@ class Controller {
     static async showAllBio(req, res) {
         try {
             let data = await BolaBio.findAll({
-                include: {
+                include: [{
                     model: Position,
-                    attributes: ['name'],
-                },
+                    as: 'Position'
+                }],
             });
             // res.send(data)
             res.render('showBioBola', { data });
@@ -160,7 +160,10 @@ class Controller {
 
     static async editBio(req, res) {
         try {
-            res.render('editBioBola');
+            let id = req.params.id
+            let bio = await BolaBio.findByPk(id)
+            // console.log(id);
+            res.render('editBioBola', { bio })
         } catch (error) {
             res.send(error);
         }
@@ -185,11 +188,24 @@ class Controller {
                 },
                 { where: { id: req.params.id } }
             );
-            res.redirect('/');
+            res.redirect('/bio');
         } catch (error) {
             res.send(error);
         }
     }
+
+    static async detailBio(req, res){
+        try {
+            let id = req.params.id
+            // console.log(id);
+            let bio = await BolaBio.findByPk(id)
+            console.log(bio);
+            res.render('detailBio', {bio})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
     static async showAllUsers(req, res) {
         try {
             if (req.session.user && req.session.user.role === 'Admin') {

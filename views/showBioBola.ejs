@@ -10,29 +10,25 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Position</th>
-          <th scope="col">Nationality</th>
-          <th scope="col">Club</th>
-          <th scope="col">Short Description</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="container">
+      <div class="row">
         <% data.forEach(function(item) { %>
-        <tr>
-          <td><%= item.id %></td>
-          <td><%= item.name %></td>
-          <td><%= item.Position.name %></td>
-          <td><%= item.nationality %></td>
-          <td><%= item.club %></td>
-          <td><%= item.shortDescription %></td>
-        </tr>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.name %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= item.Position ? item.Position.name : 'No position' %></h6>
+              <p class="card-text">
+                Nationality: <%= item.nationality %><br>
+                Club: <%= item.club %><br>
+                Description: <%= item.shortDescription %>
+              </p>
+              <a href="/<%= item.id %>" class="btn btn-primary">Details</a>
+            </div>
+          </div>
+        </div>
         <% }); %>
-      </tbody>
-    </table>
+      </div>
+    </div>
   </body>
 </html>
