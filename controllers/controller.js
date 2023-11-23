@@ -137,6 +137,11 @@ class Controller {
                 club: req.body.club,
                 shortDescription: req.body.shortDescription,
                 PositionId: req.body.PositionId,
+                shooting: req.body.shooting,
+                defending: req.body.defending,
+                passing: req.body.passing,
+                dribbling: req.body.dribbling,
+                imageUrl: req.body.imageUrl
             });
             res.redirect('/');
         } catch (error) {
@@ -166,6 +171,11 @@ class Controller {
                     club: req.body.club,
                     shortDescription: req.body.shortDescription,
                     PositionId: req.body.PositionId,
+                    shooting: req.body.shooting,
+                    defending: req.body.defending,
+                    passing: req.body.passing,
+                    dribbling: req.body.dribbling,
+                    imageUrl: req.body.imageUrl
                 },
                 { where: { id: req.params.id } }
             );
