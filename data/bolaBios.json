@@ -1,27 +1,38 @@
 [
-    {
-      "name": "Lionel Messi",
-      "birthDate": "1987-06-24",
-      "nationality": "Argentina",
-      "club": "Paris Saint-Germain",
-      "shortDescription": "Professional footballer widely considered one of the greatest of all time.",
-      "PositionId": 2
-    },
-    {
-      "name": "Cristiano Ronaldo",
-      "birthDate": "1985-02-05",
-      "nationality": "Portugal",
-      "club": "Manchester United",
-      "shortDescription": "Renowned footballer with a prolific goal-scoring record.",
-      "PositionId": 1
-      
-    },
-    {
-      "name": "Neymar Jr.",
-      "birthDate": "1992-02-05",
-      "nationality": "Brazil",
-      "club": "Paris Saint-Germain",
-      "shortDescription": "Talented forward known for his skillful play.",
-      "PositionId": 3
-    }
-  ]
+  {
+    "name": "Lionel Messi",
+    "birthDate": "1987-06-24",
+    "nationality": "Argentina",
+    "club": "Paris Saint-Germain",
+    "shortDescription": "Professional footballer widely considered one of the greatest of all time.",
+    "PositionId": 2,
+    "shooting": 90,
+    "defending": 30,
+    "passing": 85,
+    "dribbling": 95
+  },
+  {
+    "name": "Cristiano Ronaldo",
+    "birthDate": "1985-02-05",
+    "nationality": "Portugal",
+    "club": "Manchester United",
+    "shortDescription": "Renowned footballer with a prolific goal-scoring record.",
+    "PositionId": 1,
+    "shooting": 92,
+    "defending": 40,
+    "passing": 80,
+    "dribbling": 88
+  },
+  {
+    "name": "Neymar Jr.",
+    "birthDate": "1992-02-05",
+    "nationality": "Brazil",
+    "club": "Paris Saint-Germain",
+    "shortDescription": "Talented forward known for his skillful play.",
+    "PositionId": 3,
+    "shooting": 88,
+    "defending": 25,
+    "passing": 87,
+    "dribbling": 92
+  }
+]
