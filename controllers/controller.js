@@ -182,12 +182,17 @@ class Controller {
     }
     static async showAllUsers(req, res) {
         try {
-            const users = await User.findAll();
-            res.render('showAllUsers', { users });
+            if (req.session.user && req.session.user.role === 'Admin') {
+                const users = await User.findAll();
+                res.render('showAllUsers', { users });
+            } else {
+                res.redirect('/home1'); 
+            }
         } catch (error) {
-            res.send(error);
+            res.send(error.message);
         }
     }
+    
 }
 
 module.exports = Controller;
