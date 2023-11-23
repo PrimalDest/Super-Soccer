@@ -5,7 +5,7 @@
       "nationality": "Argentina",
       "club": "Paris Saint-Germain",
       "shortDescription": "Professional footballer widely considered one of the greatest of all time.",
-      "PositionId": 10
+      "PositionId": 2
     },
     {
       "name": "Cristiano Ronaldo",
@@ -13,7 +13,7 @@
       "nationality": "Portugal",
       "club": "Manchester United",
       "shortDescription": "Renowned footballer with a prolific goal-scoring record.",
-      "PositionId": 7
+      "PositionId": 1
     },
     {
       "name": "Neymar Jr.",
@@ -21,7 +21,7 @@
       "nationality": "Brazil",
       "club": "Paris Saint-Germain",
       "shortDescription": "Talented forward known for his skillful play.",
-      "PositionId": 11
+      "PositionId": 3
     }
   ]
   
