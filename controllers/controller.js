@@ -1,5 +1,7 @@
-const { BolaBio, User, Profile, Position } = require('../models');
+const { BolaBio, User, Profile, Position, Like } = require('../models');
+const { Op } = require("sequelize");
 const bcrypt = require('bcryptjs');
+const timeSince = require('../helper/helper');
 
 class Controller {
     static home(req, res) {
@@ -87,7 +89,7 @@ class Controller {
         } catch (error) {
             console.error(error);
             req.flash('error', error.message);
-            return res.render('register');
+            return res.render('register', { error: error.message });
         }
     }
 
@@ -106,19 +108,18 @@ class Controller {
                 include: {
                     model: Position,
                     as: 'Position'
-                }],
+                },
             });
-    
+            // res.send(data)
             const isAdmin = req.session.user && req.session.user.role === 'Admin';
+            const view = isAdmin ? 'showBioBolaAdmin' : 'showBioBolaUser';
     
-            res.render('showBioBola', { data, isAdmin });
+            res.render(view, { data, isAdmin });
         } catch (error) {
             res.send(error.message);
         }
     }
     
-
-
 
     static async delete(req, res) {
         try {
@@ -126,7 +127,7 @@ class Controller {
             await BolaBio.destroy({
                 where: { id: id },
             });
-            res.redirect('/');
+            res.redirect('/bio');
         } catch (error) {
             res.send(error);
         }
@@ -167,7 +168,10 @@ class Controller {
             let id = req.params.id
             let bio = await BolaBio.findByPk(id)
             // console.log(id);
-            res.render('editBioBola', { bio })
+            const isAdmin = req.session.user && req.session.user.role === 'Admin';
+            const view = isAdmin ? 'detailBioBola' : 'detailBioBolaUser';
+
+            res.render(view, { bio })
         } catch (error) {
             res.send(error);
         }
@@ -175,6 +179,7 @@ class Controller {
 
     static async postEditBio(req, res) {
         try {
+            // console.log(req.body);
             await BolaBio.update(
                 {
                     name: req.body.name,
@@ -197,11 +202,77 @@ class Controller {
             res.send(error);
         }
     }
+
+    static async detailBio(req, res){
+        try {
+            let id = req.params.id
+            // console.log(id);
+            let bio = await BolaBio.findByPk(id)
+            // console.log(bio);
+            
+            res.render('detailBio', {bio, timeSince})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async like(req, res){
+        try {
+            const id = req.params.id
+
+            await Like.increment({totalLikes: 1}, { where: { id: id } })
+
+    
+            res.redirect(`/${bio.id}`)
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async updateUserRole(req, res) {
+        const { userId, newRole } = req.body;
+
+        try {
+            if (!userId || !newRole) {
+                throw new Error('User ID and new role are required');
+            }
+
+            const user = await User.findByPk(userId);
+
+            if (!user) {
+                throw new Error('User not found');
+            }
+
+            user.role = newRole;
+            await user.save();
+
+            res.redirect('/user');
+        } catch (error) {
+            console.error(error);
+            req.flash('error', error.message);
+            res.redirect('/user');
+        }
+    }
+    
     static async showAllUsers(req, res) {
         try {
             if (req.session.user && req.session.user.role === 'Admin') {
-                const users = await User.findAll();
-                res.render('showAllUsers', { users });
+                const adminCount = await User.count({
+                    where: { role: 'Admin' },
+                });
+
+                if (adminCount < 1) {
+                    req.flash('error', 'There must be at least one admin user');
+                    return res.redirect('/user');
+                }
+
+                const users = await User.findAll({
+                    include: [{
+                        model: Profile,
+                        as: 'Profile'
+                    }]
+                });
+                res.render('showAllUsers', { users, adminCount });
             } else {
                 req.flash('error', 'You do not have permission to view this page');
                 res.redirect('/home1');
@@ -210,6 +281,26 @@ class Controller {
             console.error(error);
             req.flash('error', error.message);
             res.redirect('/home1');
+        }
+    }
+    
+    static async search(req, res) {
+        try {
+            const searchQuery = req.query.search; // get the search query from the request query
+            let data = await BolaBio.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: '%' + searchQuery + '%' // search for name that contains the search query
+                    }
+                },
+                include: {
+                    model: Position,
+                    as: 'Position'
+                },
+            });
+            res.render('showBioBolaAdmin', { data });
+        } catch (error) {
+            res.send(error.message);
         }
     }
 }

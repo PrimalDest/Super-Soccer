@@ -29,7 +29,7 @@
         </div>
     </nav>
         <div class="card">
-            <img src="<%= bio.imageUrl %>" class="card-img-top mx-auto d-block" alt="<%= bio.name %>" style="width: 200px; height: 300px;">
+          <img src="<%= bio.imageUrl %>" class="card-img-top mx-auto d-block" alt="<%= bio.name %>" style="width: 200px; height: 300px;">
             <div class="card-body">
                 <h5 class="card-title"><%= bio.name %></h5>
                 <p class="card-text"><%= bio.shortDescription %></p>
@@ -42,46 +42,46 @@
                 <li class="list-group-item">Posted: <%= timeSince(bio.createdAt) %> ago</li>
                 <li class="list-group-item">Updated: <%= timeSince(bio.updatedAt) %> ago</li>
                 <li class="list-group-item">
-                    <%= bio.likes %> likes
-                    <div class="vote-button-container">
-                        <form action="/<%= bio.id %>/like" method="post">
-                            <button class="btn btn-success" type="submit" value="submit">Like</button>
-                        </form>
-                    </div>
-                </li>
+                  <%= bio.likes || 0 %> likes
+                  <div class="vote-button-container">
+                      <form action="/<%= bio.id %>/like" method="post">
+                          <button class="btn btn-success" type="submit" value="submit">Like</button>
+                      </form>
+                  </div>
+              </li>
             </ul>
             <canvas id="myChart" width="100" height="70"></canvas>
             <script>
                 var ctx = document.getElementById('myChart').getContext('2d');
                 var myRadarChart = new Chart(ctx, {
-                  type: 'bar',
-                  data: {
-                    labels: ['Shooting', 'Defending', 'Passing', 'Dribbling'],
-                    datasets: [{
-                      label: 'Statistic',
-                      data: [<%= bio.shooting %>, <%= bio.defending %>, <%= bio.passing %>, <%= bio.dribbling %>],
-                      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                      borderColor: 'rgba(255, 99, 132, 1)',
-                      pointBackgroundColor: 'rgba(255, 99, 132, 1)',
-                      pointBorderColor: '#fff',
-                      pointHoverBackgroundColor: '#fff',
-                      pointHoverBorderColor: 'rgba(255, 99, 132, 1)'
-                    }]
-                  },
-                  options: {
-                    scale: {
-                      ticks: {
-                        beginAtZero: true,
-                        min: 0,
-                        max: 100,
-                        stepSize: 10
-                      }
+                    type: 'bar',
+                    data: {
+                        labels: ['Shooting', 'Defending', 'Passing', 'Dribbling'],
+                        datasets: [{
+                            label: 'Statistic',
+                            data: [<%= bio.shooting %>, <%= bio.defending %>, <%= bio.passing %>, <%= bio.dribbling %>],
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(255, 99, 132, 1)'
+                        }]
+                    },
+                    options: {
+                        scale: {
+                            ticks: {
+                                beginAtZero: true,
+                                min: 0,
+                                max: 100,
+                                stepSize: 10
+                            }
+                        }
                     }
-                  }
                 });
-              </script>
-            <a href="/<%= bio.id %>/edit" class="btn btn-primary">Edit</a> 
+            </script>
         </div>
     </div>
 </body>
+
 </html>

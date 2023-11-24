@@ -16,8 +16,38 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg : `Email is required`
+        },
+
+        notEmpty: {
+          msg : `Email is required`
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg : `Password is required`
+        },
+
+        notEmpty: {
+          msg : `Password is required`
+        },
+        isStrongPassword(value) {
+          const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+          if (!strongPasswordRegex.test(value)) {
+            throw new Error('Password must have at least 8 characters, at least 1 uppercase letter, at least 1 lowercase letter, and at least 1 number');
+          }
+        }
+      }
+    },
     role: DataTypes.STRING
   }, {
     sequelize,

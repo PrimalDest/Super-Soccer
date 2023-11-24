@@ -1,0 +1,17 @@
+[
+    {
+        "userId": 1,
+        "BolaBioId": 1,
+        "totalLikes": 10
+    },
+    {
+        "userId": 2,
+        "BolaBioId": 2,
+        "totalLikes": 5
+    },
+    {
+        "userId": 3,
+        "BolaBioId": 1,
+        "totalLikes": 8
+    }
+]

@@ -1,134 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Bio</title>
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h2 class="mt-5 mb-4">Add Bio</h2>
-      <a href="/user" class="btn btn-secondary mt-3">Back to User</a>
-      <form action="/add" method="POST">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            required
-          />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/bio">Bio</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/bio/search" method="GET">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <form class="form-inline ml-2" action="/logout" method="POST">
+                <button class="btn btn-outline-danger" type="submit">Logout</button>
+            </form>
         </div>
-        <div class="form-group">
-          <label for="birthDate">Birth Date</label>
-          <input
-            type="date"
-            class="form-control"
-            id="birthDate"
-            name="birthDate"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="nationality">Nationality</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nationality"
-            name="nationality"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="club">Club</label>
-          <input
-            type="text"
-            class="form-control"
-            id="club"
-            name="club"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="shortDescription">Short Description</label>
-          <textarea
-            class="form-control"
-            id="shortDescription"
-            name="shortDescription"
-            required
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label for="positionId">Position</label>
-          <select
-            class="form-control"
-            id="positionId"
-            name="positionId"
-            required
-          >
-            <option disabled selected value="">Select Position</option>
-            <option value="1">Forward</option>
-            <option value="2">Midfielder</option>
-            <option value="3">Defender</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="shooting">Shooting</label>
-          <input
-            type="number"
-            class="form-control"
-            id="shooting"
-            name="shooting"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="defending">Defending</label>
-          <input
-            type="number"
-            class="form-control"
-            id="defending"
-            name="defending"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="passing">Passing</label>
-          <input
-            type="number"
-            class="form-control"
-            id="passing"
-            name="passing"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="dribbling">Dribbling</label>
-          <input
-            type="number"
-            class="form-control"
-            id="dribbling"
-            name="dribbling"
-            required
-          />
-        </div>
-        <div class="form-group">
-            <label for="imageUrl">Image URL</label>
-            <input
-              type="text"
-              class="form-control"
-              id="imageUrl"
-              name="imageUrl"
-              required
-            />
-          </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    </nav>
+    <div class="container mt-4">
+        <form action="/add" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+    <div class="form-group">
+        <label for="birthDate">Birth Date</label>
+        <input type="date" class="form-control" id="birthDate" name="birthDate">
     </div>
-  </body>
+    <div class="form-group">
+        <label for="nationality">Nationality</label>
+        <input type="text" class="form-control" id="nationality" name="nationality">
+    </div>
+    <div class="form-group">
+        <label for="club">Club</label>
+        <input type="text" class="form-control" id="club" name="club">
+    </div>
+    <div class="form-group">
+        <label for="shortDescription">Short Description</label>
+        <textarea class="form-control" id="shortDescription" name="shortDescription"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="PositionId">Position ID</label>
+        <input type="number" class="form-control" id="PositionId" name="PositionId">
+    </div>
+    <div class="form-group">
+        <label for="shooting">Shooting</label>
+        <input type="number" class="form-control" id="shooting" name="shooting">
+    </div>
+    <div class="form-group">
+        <label for="defending">Defending</label>
+        <input type="number" class="form-control" id="defending" name="defending">
+    </div>
+    <div class="form-group">
+        <label for="passing">Passing</label>
+        <input type="number" class="form-control" id="passing" name="passing">
+    </div>
+    <div class="form-group">
+        <label for="dribbling">Dribbling</label>
+        <input type="number" class="form-control" id="dribbling" name="dribbling">
+    </div>
+    <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
 </html>

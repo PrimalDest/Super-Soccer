@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Like.init({
     userId: DataTypes.INTEGER,
-    BolaBioId: DataTypes.INTEGER
+    BolaBioId: DataTypes.INTEGER,
+    totalLikes: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Like',
