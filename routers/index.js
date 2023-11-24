@@ -14,7 +14,7 @@ router.get('/login', Controller.login); // login page => user dan admin
 
 router.post('/login', Controller.login);
 
-router.post('/logout', Controller.logout); // logout route
+router.post('/logout', Controller.logout);
 
 router.get("/bio", Controller.showAllBio)
 

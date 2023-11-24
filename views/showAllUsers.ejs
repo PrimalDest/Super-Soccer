@@ -66,10 +66,12 @@
     <header>
       <h1>All User</h1>
     </header>
-    <nav>
-      <a href="/add">Add Bio</a>
-      <a href="/bio">Bio</a>
-      <a href="/logout">logout</a>
+    <nav class="d-flex justify-content-center">
+      <form class="form-inline" action="/logout" method="POST">
+        <a class="mx-2" href="/add">Add Bio</a>
+        <a class="mx-2" href="/bio">Bio</a>
+        <button class="btn btn-outline-danger" type="submit">Logout</button>
+      </form>
     </nav>
     <div class="container">
       <table class="table">

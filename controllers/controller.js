@@ -167,11 +167,8 @@ class Controller {
         try {
             let id = req.params.id
             let bio = await BolaBio.findByPk(id)
-            // console.log(id);
-            const isAdmin = req.session.user && req.session.user.role === 'Admin';
-            const view = isAdmin ? 'detailBioBola' : 'detailBioBolaUser';
-
-            res.render(view, { bio })
+            
+            res.render('editBioBola', { bio })
         } catch (error) {
             res.send(error);
         }
@@ -209,8 +206,9 @@ class Controller {
             // console.log(id);
             let bio = await BolaBio.findByPk(id)
             // console.log(bio);
-            
-            res.render('detailBio', {bio, timeSince})
+            const isAdmin = req.session.user && req.session.user.role === 'Admin';
+            const view = isAdmin ? 'detailBio' : 'detailBioUser';
+            res.render(view, {bio, timeSince})
         } catch (error) {
             res.send(error)
         }
